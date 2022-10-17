@@ -1,0 +1,662 @@
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> show database
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'database' at line 1
+MariaDB [(none)]> show databases;
++-----------------------+
+| Database              |
++-----------------------+
+| A                     |
+| Anm                   |
+| BEFIN                 |
+| COLLEGE               |
+| CompanyDB             |
+| DICTIONARY            |
+| Dictionary            |
+| EXAM                  |
+| FLIGHTINFO            |
+| GOPIKA                |
+| LIBRARY               |
+| LIBRARY1              |
+| Labexam               |
+| Library_CSB_10        |
+| MEC26                 |
+| SCHOOL                |
+| SREYA                 |
+| Sreehari              |
+| Sreya                 |
+| Student               |
+| Student1              |
+| aaa                   |
+| adarsh                |
+| albert                |
+| albert_exam           |
+| ambus                 |
+| anu                   |
+| arathy                |
+| book_details          |
+| college               |
+| college1              |
+| company               |
+| constraints           |
+| cs5a57                |
+| d1                    |
+| dab1                  |
+| db                    |
+| db1                   |
+| dbase                 |
+| details               |
+| dictionary            |
+| dtb                   |
+| ebin                  |
+| emilin20              |
+| exam                  |
+| f1                    |
+| gokulnath             |
+| gopika                |
+| info                  |
+| information_schema    |
+| joel                  |
+| lab                   |
+| lab_exam              |
+| library               |
+| mysql                 |
+| performance_schema    |
+| rag                   |
+| sale                  |
+| sales                 |
+| sample                |
+| sneha                 |
+| snehaanju             |
+| sreehari              |
+| student               |
+| student1              |
+| tables                |
+| test                  |
+| thara                 |
+| tutorial              |
+| uni                   |
+| vishruth_internalExam |
++-----------------------+
+71 rows in set (0.002 sec)
+
+MariaDB [(none)]> use Anm;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> show tables;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [Anm]> show table address
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'address' at line 1
+MariaDB [Anm]> show table address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'address' at line 1
+MariaDB [Anm]> show columns from address
+    -> show columns from address;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'show columns from address' at line 2
+MariaDB [Anm]> show columns from address;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| house_name | varchar(100) | YES  |     | NULL    |       |
+| address    | varchar(100) | YES  |     | NULL    |       |
+| place      | varchar(100) | YES  |     | NULL    |       |
+| state      | varchar(100) | YES  |     | NULL    |       |
+| pincode    | int(11)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> insert into address values("Eman Thoppil", "Thoppil Lane, Chakka Jn", "Kochi", "Kerala", "682018");
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [Anm]> insert into address values("Kedakekota", "Thoppil Laneshowe, Chakka Jn", "Kochi", "Kerala", "682018");
+Query OK, 1 row affected (0.040 sec)
+
+MariaDB [Anm]> select * from address;
++--------------+------------------------------+-------+--------+---------+
+| house_name   | address                      | place | state  | pincode |
++--------------+------------------------------+-------+--------+---------+
+| Eman Thoppil | Thoppil Lane, Chakka Jn      | Kochi | Kerala |  682018 |
+| Kedakekota   | Thoppil Laneshowe, Chakka Jn | Kochi | Kerala |  682018 |
++--------------+------------------------------+-------+--------+---------+
+2 rows in set (0.000 sec)
+
+MariaDB [Anm]> delete from address where place = "Kochi";
+Query OK, 2 rows affected (0.037 sec)
+
+MariaDB [Anm]> select * from address;
+Empty set (0.001 sec)
+
+MariaDB [Anm]> show tables ;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.001 sec)
+
+MariaDB [Anm]> show columns from address;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| house_name | varchar(100) | YES  |     | NULL    |       |
+| address    | varchar(100) | YES  |     | NULL    |       |
+| place      | varchar(100) | YES  |     | NULL    |       |
+| state      | varchar(100) | YES  |     | NULL    |       |
+| pincode    | int(11)      | YES  |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> ALTER TABLE address ADD s_id Ctrl-C -- exit!
+Aborted
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 9
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use Anm
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> show tables
+    -> ;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [Anm]> show columns from student;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| name             | varchar(100) | NO   |     | NULL    |       |
+| id               | int(11)      | NO   |     | NULL    |       |
+| ktu_reg_id       | varchar(50)  | YES  |     | NULL    |       |
+| year_of_admn     | int(11)      | YES  |     | NULL    |       |
+| current_semester | int(11)      | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> ALTER TASCtrl-C -- exit!
+Aborted
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 10
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use Anm
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> ALTER TABLE address ADD s_id int NOT NULL;
+Query OK, 0 rows affected (0.039 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [Anm]> show columns from address;
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| house_name | varchar(100) | YES  |     | NULL    |       |
+| address    | varchar(100) | YES  |     | NULL    |       |
+| place      | varchar(100) | YES  |     | NULL    |       |
+| state      | varchar(100) | YES  |     | NULL    |       |
+| pincode    | int(11)      | YES  |     | NULL    |       |
+| s_id       | int(11)      | NO   |     | NULL    |       |
++------------+--------------+------+-----+---------+-------+
+6 rows in set (0.001 sec)
+
+MariaDB [Anm]> ALTER TABLE address DROP COLUMN house_name;
+Query OK, 0 rows affected (0.747 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [Anm]> SHOW COLUMNS from address;
++---------+--------------+------+-----+---------+-------+
+| Field   | Type         | Null | Key | Default | Extra |
++---------+--------------+------+-----+---------+-------+
+| address | varchar(100) | YES  |     | NULL    |       |
+| place   | varchar(100) | YES  |     | NULL    |       |
+| state   | varchar(100) | YES  |     | NULL    |       |
+| pincode | int(11)      | YES  |     | NULL    |       |
+| s_id    | int(11)      | NO   |     | NULL    |       |
++---------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> INSERT INTO address VALUES("Eman Thoppil, Kacheripady", "Kochi", "State", 682018, 20201); 
+Query OK, 1 row affected (0.036 sec)
+
+MariaDB [Anm]> INSERT INTO address VALUES("Mulamootil House, Waxwall Lane", "Kochi", "State", 682018, 20202); 
+Query OK, 1 row affected (0.050 sec)
+
+MariaDB [Anm]> INSERT INTO address VALUES("6D Navjyothi Convent, Thrikkakara", "Pattam", "Maharashtra", 124978, 20203); 
+Query OK, 1 row affected (0.037 sec)
+
+MariaDB [Anm]> UPDATE address SET state = "Kerala" WHERE state = "State";
+Query OK, 2 rows affected (0.041 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+MariaDB [Anm]> INSERT INTO address VALUES("Kezhakekadamanakotta, Choice Park", "Alapuzha", "Kerala", 238729, 20204); 
+Query OK, 1 row affected (0.036 sec)
+
+MariaDB [Anm]> INSERT INTO address VALUES("Chandrathil Road, House No. 9", "Edapally", "Kerala",682024 , 20205); 
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [Anm]> SELECT * FROM address;
++-----------------------------------+----------+-------------+---------+-------+
+| address                           | place    | state       | pincode | s_id  |
++-----------------------------------+----------+-------------+---------+-------+
+| Eman Thoppil, Kacheripady         | Kochi    | Kerala      |  682018 | 20201 |
+| Mulamootil House, Waxwall Lane    | Kochi    | Kerala      |  682018 | 20202 |
+| 6D Navjyothi Convent, Thrikkakara | Pattam   | Maharashtra |  124978 | 20203 |
+| Kezhakekadamanakotta, Choice Park | Alapuzha | Kerala      |  238729 | 20204 |
+| Chandrathil Road, House No. 9     | Edapally | Kerala      |  682024 | 20205 |
++-----------------------------------+----------+-------------+---------+-------+
+5 rows in set (0.000 sec)
+
+MariaDB [Anm]> SHOW COLUMNS FROM books_borrowed_by_student;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| sid   | int(11) | YES  |     | NULL    |       |
+| bid1  | int(11) | YES  |     | NULL    |       |
+| bid2  | int(11) | YES  |     | NULL    |       |
+| bid3  | int(11) | YES  |     | NULL    |       |
+| bid4  | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> INSERT INTO books_borrowed_by_student VALUES(20201, 1234, 2345, 3456, 4567); 
+Query OK, 1 row affected (0.052 sec)
+
+MariaDB [Anm]> INSERT INTO books_borrowed_by_student VALUES(20202, 5678, 6789, 7890, 8901); 
+Query OK, 1 row affected (0.059 sec)
+
+MariaDB [Anm]> INSERT INTO books_borrowed_by_student VALUES(20203, 9012, 0123, 1245, 2356); 
+Query OK, 1 row affected (0.036 sec)
+
+MariaDB [Anm]> INSERT INTO books_borrowed_by_student VALUES(20204, 3412, 4512, 5612, 5686); 
+Query OK, 1 row affected (0.050 sec)
+
+MariaDB [Anm]> INSERT INTO books_borrowed_by_student VALUES(20205, 6734, 8743, 6798, 8745); 
+Query OK, 1 row affected (0.047 sec)
+
+MariaDB [Anm]> SELECT * FROM books_borrowed_by_student;
++-------+------+------+------+------+
+| sid   | bid1 | bid2 | bid3 | bid4 |
++-------+------+------+------+------+
+| 20201 | 1234 | 2345 | 3456 | 4567 |
+| 20202 | 5678 | 6789 | 7890 | 8901 |
+| 20203 | 9012 |  123 | 1245 | 2356 |
+| 20204 | 3412 | 4512 | 5612 | 5686 |
+| 20205 | 6734 | 8743 | 6798 | 8745 |
++-------+------+------+------+------+
+5 rows in set (0.000 sec)
+
+MariaDB [Anm]> SHOW TABLES FROM Anm;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [Anm]> SHOW COLUMNS FROM course;
++-----------------+--------------+------+-----+---------+-------+
+| Field           | Type         | Null | Key | Default | Extra |
++-----------------+--------------+------+-----+---------+-------+
+| course_id       | int(11)      | YES  |     | NULL    |       |
+| name            | varchar(100) | YES  |     | NULL    |       |
+| credits         | int(11)      | YES  |     | NULL    |       |
+| no_of_hours     | int(11)      | YES  |     | NULL    |       |
+| reference_books | varchar(100) | YES  |     | NULL    |       |
++-----------------+--------------+------+-----+---------+-------+
+5 rows in set (0.002 sec)
+
+MariaDB [Anm]> INSERT INTO course VALUES(203, "Operating System", 4, 16, "Silbershatz"); 
+Query OK, 1 row affected (0.037 sec)
+
+MariaDB [Anm]> INSERT INTO course VALUES(201, "Database Management System", 4, 20, "Beginners guide to basic DBMS"); 
+Query OK, 1 row affected (0.053 sec)
+
+MariaDB [Anm]> INSERT INTO course VALUES(202, "COI", 4, 20, "Computer Organisation and Architecture by Abraham Shultz"); 
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [Anm]> Remadevi Graph Theory by"); 
+[1]+  Stopped                 mysql -u mec -p
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 11
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use Anm;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> INSERT INTO course VALUES(204, "GT", 4, 20, "Graph Theory by Remadevi");
+Query OK, 1 row affected (0.042 sec)
+
+MariaDB [Anm]> INSERT INTO course VALUES(205, "COI", 0, 10, "Fundamentals of Constitution of India");
+Query OK, 1 row affected (0.056 sec)
+
+MariaDB [Anm]> SELECT * FROM course;
++-----------+----------------------------+---------+-------------+----------------------------------------------------------+
+| course_id | name                       | credits | no_of_hours | reference_books                                          |
++-----------+----------------------------+---------+-------------+----------------------------------------------------------+
+|       203 | Operating System           |       4 |          16 | Silbershatz                                              |
+|       201 | Database Management System |       4 |          20 | Beginners guide to basic DBMS                            |
+|       202 | COI                        |       4 |          20 | Computer Organisation and Architecture by Abraham Shultz |
+|       204 | GT                         |       4 |          20 | Graph Theory by Remadevi                                 |
+|       205 | COI                        |       0 |          10 | Fundamentals of Constitution of India                    |
++-----------+----------------------------+---------+-------------+----------------------------------------------------------+
+5 rows in set (0.000 sec)
+
+MariaDB [Anm]> show tables;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [Anm]> SHOW COLUMNS FROM courses_enrolled;
++----------------+---------+------+-----+---------+-------+
+| Field          | Type    | Null | Key | Default | Extra |
++----------------+---------+------+-----+---------+-------+
+| sid            | int(11) | YES  |     | NULL    |       |
+| cid            | int(11) | YES  |     | NULL    |       |
+| credits_earned | int(11) | YES  |     | NULL    |       |
++----------------+---------+------+-----+---------+-------+
+3 rows in set (0.002 sec)
+
+MariaDB [Anm]> INSERT INTO courses_enrolled VALUES(20201, 201, 3);
+Query OK, 1 row affected (0.044 sec)
+
+MariaDB [Anm]> show columns from dept;
++---------------+---------+------+-----+---------+-------+
+| Field         | Type    | Null | Key | Default | Extra |
++---------------+---------+------+-----+---------+-------+
+| id            | int(11) | YES  |     | NULL    |       |
+| no_of_faculty | int(11) | YES  |     | NULL    |       |
+| block_no      | int(11) | YES  |     | NULL    |       |
+| hod_id        | int(11) | YES  |     | NULL    |       |
++---------------+---------+------+-----+---------+-------+
+4 rows in set (0.001 sec)
+
+MariaDB [Anm]> INSERT INTO dept VALUES(32, 6, 2, 3431);
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [Anm]> INSERT INTO dept VALUES(33, 8, 1, 3432);
+Query OK, 1 row affected (0.043 sec)
+
+MariaDB [Anm]> INSERT INTO dept VALUES(34, 7, 1, 3434);
+Query OK, 1 row affected (0.031 sec)
+
+MariaDB [Anm]> INSERT INTO dept VALUES(35, 7, 1, 3435);
+Query OK, 1 row affected (0.036 sec)
+
+MariaDB [Anm]> INSERT INTO dept VALUES(36, 7, 2, 3436);
+Query OK, 1 row affected (0.029 sec)
+
+MariaDB [Anm]> show columns details
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'details' at line 1
+MariaDB [Anm]> show columns from details
+    -> ;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| id      | int(11)     | NO   |     | NULL    |       |
+| gender  | varchar(10) | YES  |     | NULL    |       |
+| ph_no   | int(11)     | YES  |     | NULL    |       |
+| email   | varchar(50) | YES  |     | NULL    |       |
+| room_no | int(11)     | YES  |     | NULL    |       |
+| bday    | date        | YES  |     | NULL    |       |
+| dept_id | int(11)     | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+7 rows in set (0.002 sec)
+
+MariaDB [Anm]> Ctrl-C -- exit!
+Aborted
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 12
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use Anm;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> show columns from faculty;
++---------------------+--------------+------+-----+---------+-------+
+| Field               | Type         | Null | Key | Default | Extra |
++---------------------+--------------+------+-----+---------+-------+
+| name                | varchar(100) | NO   |     | NULL    |       |
+| id                  | int(11)      | NO   |     | NULL    |       |
+| start_date          | date         | YES  |     | NULL    |       |
+| designation         | varchar(100) | YES  |     | NULL    |       |
+| years_of_experience | int(11)      | YES  |     | NULL    |       |
++---------------------+--------------+------+-----+---------+-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> INSERT INTO details VALUES(20201, "F", 37428346, annat@gmail.com, 34, 28.03.2002, 32);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '@gmail.com, 34, 28.03.2002, 32)' at line 1
+MariaDB [Anm]> INSERT INTO details VALUES(20201, "F", 37428346,"annat@gmail.com", 34, 28.03.2002, 32);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.2002, 32)' at line 1
+MariaDB [Anm]> INSERT INTO details VALUES(20201, "F", 37428346,"annat@gmail.com", 34, "2002-03-28", 32);
+Query OK, 1 row affected (0.039 sec)
+
+MariaDB [Anm]> INSERT INTO details VALUES(20202, "F", 37423346,"hi@gmail.com", 34, "2002-03-22", 32);
+Query OK, 1 row affected (0.076 sec)
+
+MariaDB [Anm]> INSERT INTO details VALUES(20203, "M", 65423346,"yalla@gmail.com", 37, "2001-09-22", 36);
+Query OK, 1 row affected (0.038 sec)
+
+MariaDB [Anm]> INSERT INTO details VALUES(20204, "M", 654245346,"haha@gmail.com", 37, "2002-09-05", 36);
+Query OK, 1 row affected (0.049 sec)
+
+MariaDB [Anm]> INSERT INTO details VALUES(20205, "M", 654248746,"hehe@gmail.com", 38, "2002-16-05", 35);
+ERROR 1292 (22007): Incorrect date value: '2002-16-05' for column `Anm`.`details`.`bday` at row 1
+MariaDB [Anm]> INSERT INTO details VALUES(20205, "M", 654248746,"hehe@gmail.com", 38, "2002-12-05", 35);
+Query OK, 1 row affected (0.047 sec)
+
+MariaDB [Anm]> INSERT INTO faculty VALUES("Hana", 3431, "2020-09-12", "Professor", 15);
+Query OK, 1 row affected (0.047 sec)
+
+MariaDB [Anm]> INSERT INTO faculty VALUES("Jeslin", 3432, "2021-01-13", "Professor", 14);
+Query OK, 1 row affected (0.050 sec)
+
+MariaDB [Anm]> INSERT INTO faculty VALUES("Philip", 3434, "2021-01-13", "Professor", 14);
+Query OK, 1 row affected (0.041 sec)
+
+MariaDB [Anm]> SHOW TABLES
+    -> ;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| library_books             |
+| student                   |
++---------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [Anm]> SHOW COLUMNS FROM library_books;
++--------+--------------+------+-----+---------+-------+
+| Field  | Type         | Null | Key | Default | Extra |
++--------+--------------+------+-----+---------+-------+
+| id     | int(11)      | YES  |     | NULL    |       |
+| name   | varchar(100) | YES  |     | NULL    |       |
+| author | varchar(100) | YES  |     | NULL    |       |
+| status | varchar(100) | YES  |     | NULL    |       |
++--------+--------------+------+-----+---------+-------+
+4 rows in set (0.002 sec)
+
+MariaDB [Anm]> DROP TABLE library_books;
+Query OK, 0 rows affected (0.352 sec)
+
+MariaDB [Anm]> CREATE TABLE library_books;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [Anm]> CREATE TABLE library_book
+    -> ;
+ERROR 1113 (42000): A table must have at least 1 column
+MariaDB [Anm]> clear
+MariaDB [Anm]> CREATE TABLE library_books(id int, name varchar(100), author varchar(100), status varchar(100);)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '' at line 1
+    -> CREATE TABLE library_books(id int, name varchar(100), author varchar(100), status varchar(100));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+CREATE TABLE library_books(id int, name varchar(100), author varchar(100), ...' at line 1
+MariaDB [Anm]> ) CREATE TABLE library_books(id int, name varchar(100), author varchar(100), status varchar(100) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') CREATE TABLE library_books(id int, name varchar(100), author varchar(100), ...' at line 1
+MariaDB [Anm]> ) CREATE TABLE library_books(id int,name varchar(100),author varchar(100),status varchar(100) );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ') CREATE TABLE library_books(id int,name varchar(100),author varchar(100),sta...' at line 1
+MariaDB [Anm]> SHOW COLUMNS FROM student;
++------------------+--------------+------+-----+---------+-------+
+| Field            | Type         | Null | Key | Default | Extra |
++------------------+--------------+------+-----+---------+-------+
+| name             | varchar(100) | NO   |     | NULL    |       |
+| id               | int(11)      | NO   |     | NULL    |       |
+| ktu_reg_id       | varchar(50)  | YES  |     | NULL    |       |
+| year_of_admn     | int(11)      | YES  |     | NULL    |       |
+| current_semester | int(11)      | YES  |     | NULL    |       |
++------------------+--------------+------+-----+---------+-------+
+5 rows in set (0.002 sec)
+
+MariaDB [Anm]> INSERT INTO faculty VALUES("Anna", 20201, "MDL20CS013", 2020, 5);
+ERROR 1292 (22007): Incorrect date value: 'MDL20CS013' for column `Anm`.`faculty`.`start_date` at row 1
+MariaDB [Anm]> INSERT INTO student VALUES("Anna", 20201, "MDL20CS013", 2020, 5);
+Query OK, 1 row affected (0.032 sec)
+
+MariaDB [Anm]> INSERT INTO student VALUES("Ananya", 20202, "MDL20CS014", 2020, 5);
+Query OK, 1 row affected (0.062 sec)
+
+MariaDB [Anm]> INSERT INTO student VALUES("Dan", 20203, "MDL20CS015", 2020, 5);
+Query OK, 1 row affected (0.046 sec)
+
+MariaDB [Anm]> INSERT INTO student VALUES("Ajeed", 20204, "MDL20CS017", 2020, 5);
+Query OK, 1 row affected (0.040 sec)
+
+MariaDB [Anm]> select * from student;
++--------+-------+------------+--------------+------------------+
+| name   | id    | ktu_reg_id | year_of_admn | current_semester |
++--------+-------+------------+--------------+------------------+
+| Anna   | 20201 | MDL20CS013 |         2020 |                5 |
+| Ananya | 20202 | MDL20CS014 |         2020 |                5 |
+| Dan    | 20203 | MDL20CS015 |         2020 |                5 |
+| Ajeed  | 20204 | MDL20CS017 |         2020 |                5 |
++--------+-------+------------+--------------+------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [Anm]> SELECT COUNT(current_semester) FROM student WHERE 
+    -> current_semester = 5;
++-------------------------+
+| COUNT(current_semester) |
++-------------------------+
+|                       4 |
++-------------------------+
+1 row in set (0.000 sec)
+
+MariaDB [Anm]> SELECT * FROM faculty;
++--------+------+------------+-------------+---------------------+
+| name   | id   | start_date | designation | years_of_experience |
++--------+------+------------+-------------+---------------------+
+| Hana   | 3431 | 2020-09-12 | Professor   |                  15 |
+| Jeslin | 3432 | 2021-01-13 | Professor   |                  14 |
+| Philip | 3434 | 2021-01-13 | Professor   |                  14 |
++--------+------+------------+-------------+---------------------+
+3 rows in set (0.000 sec)
+
+MariaDB [Anm]> SELECT AVG(years_of_experience) FROM faculty;
++--------------------------+
+| AVG(years_of_experience) |
++--------------------------+
+|                  14.3333 |
++--------------------------+
+1 row in set (0.000 sec)
+
+
