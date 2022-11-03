@@ -1,0 +1,30 @@
+MariaDB [Anm]> SELECT sid FROM courses_enrolled WHERE cid IN  ( SELECT cid FROM courses_enrolled WHERE cid = 201);
++-------+
+| sid   |
++-------+
+| 20201 |
+| 20202 |
+| 20203 |
+| 20204 |
+| 20205 |
++-------+
+5 rows in set (0.001 sec)
+
+MariaDB [Anm]> SELECT sid FROM courses_enrolled WHERE cid NOT IN  ( SELECT cid FROM courses_enrolled WHERE cid = 201);
++-------+
+| sid   |
++-------+
+| 20201 |
+| 20202 |
+| 20203 |
+| 20204 |
+| 20205 |
+| 20201 |
+| 20202 |
+| 20203 |
+| 20204 |
+| 20205 |
++-------+
+10 rows in set (0.000 sec)
+
+MariaDB [Anm]> 
