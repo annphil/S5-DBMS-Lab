@@ -1,0 +1,55 @@
+mec@CC-1-3:~$ mysql -u mec -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.3.31-MariaDB-0+deb10u1 Debian 10
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use Anm;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MariaDB [Anm]> SELECT * FROM address WHERE place = "Kochi"
+    -> UNION
+    -> SELECT * FROM address WHERE state = "kerala";
++-----------------------------------+----------+--------+---------+-------+
+| address                           | place    | state  | pincode | s_id  |
++-----------------------------------+----------+--------+---------+-------+
+| Eman Thoppil, Kacheripady         | Kochi    | Kerala |  682018 | 20201 |
+| Mulamootil House, Waxwall Lane    | Kochi    | Kerala |  682018 | 20202 |
+| Kezhakekadamanakotta, Choice Park | Alapuzha | Kerala |  238729 | 20204 |
+| Chandrathil Road, House No. 9     | Edapally | Kerala |  682024 | 20205 |
++-----------------------------------+----------+--------+---------+-------+
+4 rows in set (0.000 sec)
+
+MariaDB [Anm]> SELECT * FROM address WHERE place = "Kochi" UNION ALL SELECT * FROM address WHERE state = "kerala";
++-----------------------------------+----------+--------+---------+-------+
+| address                           | place    | state  | pincode | s_id  |
++-----------------------------------+----------+--------+---------+-------+
+| Eman Thoppil, Kacheripady         | Kochi    | Kerala |  682018 | 20201 |
+| Mulamootil House, Waxwall Lane    | Kochi    | Kerala |  682018 | 20202 |
+| Eman Thoppil, Kacheripady         | Kochi    | Kerala |  682018 | 20201 |
+| Mulamootil House, Waxwall Lane    | Kochi    | Kerala |  682018 | 20202 |
+| Kezhakekadamanakotta, Choice Park | Alapuzha | Kerala |  238729 | 20204 |
+| Chandrathil Road, House No. 9     | Edapally | Kerala |  682024 | 20205 |
++-----------------------------------+----------+--------+---------+-------+
+6 rows in set (0.000 sec)
+
+MariaDB [Anm]> SELECT * FROM address WHERE place = "Kochi" INTERSECT  SELECT * FROM address WHERE state = "kerala";
++--------------------------------+-------+--------+---------+-------+
+| address                        | place | state  | pincode | s_id  |
++--------------------------------+-------+--------+---------+-------+
+| Eman Thoppil, Kacheripady      | Kochi | Kerala |  682018 | 20201 |
+| Mulamootil House, Waxwall Lane | Kochi | Kerala |  682018 | 20202 |
++--------------------------------+-------+--------+---------+-------+
+2 rows in set (0.000 sec)
+
+MariaDB [Anm]> SELECT * FROM address WHERE place = "Kochi" INTERSECT ALL  SELECT * FROM address WHERE state = "kerala";
+ERROR 1221 (HY000): Incorrect usage of INTERSECT and ALL
+MariaDB [Anm]> SELECT * FROM address WHERE place = "Kochi" MINUS  SELECT * FROM address WHERE state = "kerala";
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'MINUS  SELECT * FROM address WHERE state = "kerala"' at line 1
+MariaDB [Anm]> 
