@@ -1,0 +1,34 @@
+MariaDB [Anm]> CREATE TEMPORARY TABLE TempStudents(name varchar(100), current_semester int);
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [Anm]> SELECT name, current_semester FROM student;
++--------+------------------+
+| name   | current_semester |
++--------+------------------+
+| Anna   |                5 |
+| Ananya |                5 |
+| Dan    |                5 |
+| Ajeed  |                5 |
++--------+------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [Anm]> CREATE TEMPORARY TABLE TempStudents(name varchar(100), current_semester int);
+ERROR 1050 (42S01): Table 'TempStudents' already exists
+MariaDB [Anm]> INSERT INTO TemoStudents SELECT name, current_semester FROM student;
+ERROR 1146 (42S02): Table 'Anm.TemoStudents' doesn't exist
+MariaDB [Anm]> INSERT INTO TempStudents SELECT name, current_semester FROM student;
+Query OK, 4 rows affected (0.000 sec)
+Records: 4  Duplicates: 0  Warnings: 0
+
+MariaDB [Anm]> SELECT * FROM TempStudents;
++--------+------------------+
+| name   | current_semester |
++--------+------------------+
+| Anna   |                5 |
+| Ananya |                5 |
+| Dan    |                5 |
+| Ajeed  |                5 |
++--------+------------------+
+4 rows in set (0.000 sec)
+
+MariaDB [Anm]> 
