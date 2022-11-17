@@ -1,0 +1,56 @@
+MariaDB [Anm]> commit;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [Anm]> show tables;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| stud_details              |
+| student                   |
++---------------------------+
+9 rows in set (0.000 sec)
+
+MariaDB [Anm]> DROP VIEW stud_details;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [Anm]> show tables;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| student                   |
++---------------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [Anm]> rollback;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [Anm]> show tables;
++---------------------------+
+| Tables_in_Anm             |
++---------------------------+
+| address                   |
+| books_borrowed_by_student |
+| course                    |
+| courses_enrolled          |
+| dept                      |
+| details                   |
+| faculty                   |
+| student                   |
++---------------------------+
+8 rows in set (0.000 sec)
+
+MariaDB [Anm]> 
