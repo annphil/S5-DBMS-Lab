@@ -1,0 +1,12 @@
+MariaDB [Anm]> CREATE USER 'testUser' IDENTIFIED BY 'pwd';
+Query OK, 0 rows affected (0.025 sec)
+
+MariaDB [Anm]> GRANT select ON student TO testUser;
+Query OK, 0 rows affected (0.025 sec)
+
+MariaDB [Anm]> REVOKE select ON student FROM user;
+ERROR 1141 (42000): There is no such grant defined for user 'user' on host '%'
+MariaDB [Anm]> REVOKE select ON student FROM testUser;
+Query OK, 0 rows affected (0.000 sec)
+
+MariaDB [Anm]> 
