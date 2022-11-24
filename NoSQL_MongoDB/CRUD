@@ -1,0 +1,89 @@
+--------------------------------For Record-------------------------------------
+
+
+
+db.student.insertMany
+([
+    {
+    name: "Anna",
+    age: 20,
+    branch: "CSE",
+    course: "DBMS Lab",
+    mode: "offline",
+    paid: true,
+    amount: 1499
+    },
+    
+    {
+        name: "Banana",
+        age: 21,
+        branch: "CSE",
+        course: "DBMS Lab",
+        paid: false,
+        amount: 1499
+    },
+    
+    {
+        name: "Ajeed",
+        age: 20,
+        branch: "CSE",
+        course: "DBMS Lab",
+        mode: "offline",
+        paid: true,
+        amount: 1499
+    }
+])
+
+OUTPUT
+-->1InsertMany.png
+
+
+db.student.find().forEach(printjson)
+
+OUTPUT
+{
+	"_id" : ObjectId("637f0142304fc41e6104f6b7"),
+	"name" : "Anna",
+	"age" : 20,
+	"branch" : "CSE",
+	"course" : "DBMS Lab",
+	"mode" : "offline",
+	"paid" : true,
+	"amount" : 1499
+}
+{
+	"_id" : ObjectId("637f0142304fc41e6104f6b8"),
+	"name" : "Banana",
+	"age" : 21,
+	"branch" : "CSE",
+	"course" : "DBMS Lab",
+	"paid" : false,
+	"amount" : 1499
+}
+{
+	"_id" : ObjectId("637f0142304fc41e6104f6b9"),
+	"name" : "Ajeed",
+	"age" : 20,
+	"branch" : "CSE",
+	"course" : "DBMS Lab",
+	"mode" : "offline",
+	"paid" : true,
+	"amount" : 1499
+}
+
+--> 2.1find().png, 2.2find().png
+
+
+
+db.student.updateOne({name: "Banana"}, {$set: {paid: true}})
+
+OUTPUT
+--> 3.1Update().png
+3.2Update().png
+3.3Update().png
+
+DELETE
+db.student.deleteOne({name: "Ajeed"})
+OUTPUT
+4.1Delete().png
+4.2Delete().png
