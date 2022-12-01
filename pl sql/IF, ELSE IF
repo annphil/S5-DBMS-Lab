@@ -1,0 +1,21 @@
+SQL> DECLARE
+  2  x number(5);
+  3  y number(5);
+  4  
+  5  BEGIN
+  6  x:=1;
+  7  y:=2;
+  8  IF x>y THEN
+  9  dbms_output.put_line('x is greater than y');
+ 10  ELSIF x<y THEN
+ 11  dbms_output.put_line('y is greater than x');
+ 12  ELSE
+ 13  dbms_output.put_line('x is equal to y');
+ 14  END IF;
+ 15  END;
+ 16  /
+y is greater than x
+
+PL/SQL procedure successfully completed.
+
+SQL> 
