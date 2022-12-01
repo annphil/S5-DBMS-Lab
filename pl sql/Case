@@ -1,0 +1,19 @@
+SQL> DECLARE
+  2  grade char(1) := 'A';
+  3  
+  4  BEGIN
+  5  CASE grade
+  6     when 'A' then dbms_output.put_line('Excellent');
+  7  	when 'B' then dbms_output.put_line('Very good');
+  8  	when 'C' then dbms_output.put_line('Well done');
+  9  	when 'D' then dbms_output.put_line('You passed');
+ 10  	when 'F' then dbms_output.put_line('Better try again');
+ 11  	else dbms_output.put_line('No such grade'); 
+ 12  END CASE;
+ 13  END;
+ 14  /
+Excellent
+
+PL/SQL procedure successfully completed.
+
+SQL> 
