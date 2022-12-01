@@ -1,0 +1,33 @@
+mec@cc-1-4:~$ oracle
+
+SQL*Plus: Release 21.0.0.0.0 - Production on Thu Dec 1 10:05:38 2022
+Version 21.5.0.0.0
+
+Copyright (c) 1982, 2021, Oracle.  All rights reserved.
+
+
+Connected to:
+Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
+
+SQL> set serveroutput on           
+SQL> program
+SP2-0042: unknown command "program" - rest of line ignored.
+SQL> BEGIN
+  2  dbms_output.put_line('Hello World...');
+  3  END;    
+  4  /
+Hello World...
+
+-------------------Use pgm below For Record  ------------------------
+
+SQL> DECLARE
+  2  message varchar2(20):='Hello World!';
+  3  BEGIN
+  4  dbms_output.put_line(message);             
+  5  END;
+  6  /
+Hello World!
+
+PL/SQL procedure successfully completed.
+
+SQL> 
